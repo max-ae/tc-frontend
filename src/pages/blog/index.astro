@@ -5,6 +5,7 @@ import Footer from "../../components/Footer.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../../consts";
 import { getCollection } from "astro:content";
 import FormattedDate from "../../components/FormattedDate.astro";
+import Button from "../../components/Button.astro";
 
 const posts = (await getCollection("blog")).sort(
 	(a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf(),
@@ -88,6 +89,15 @@ const posts = (await getCollection("blog")).sort(
 	<body>
 		<Header />
 		<main>
+			<h1>Regulations Blog</h1>
+			<div class="flex flex-row">
+				<div class="grow">
+					Keep updated and learn: Browse through our blog posts on
+					different regulation topics.
+				</div>
+				<Button href="#">Filter</Button>
+			</div>
+			<div class="h-10"></div>
 			<section>
 				<ul>
 					{
