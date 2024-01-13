@@ -1,24 +1,30 @@
 ---
-import HeaderLink from './HeaderLink.astro';
-import { Image } from 'astro:assets';
-import logo from '../img/logo.png'
+import HeaderLink from "./HeaderLink.astro";
+import { Image } from "astro:assets";
+import logo from "../img/logo.png";
 ---
 
 <header>
     <nav>
-        <a href="/">
-            <Image src={logo} alt="SimpleRegs"/>
+        <a href=`${import.meta.env.BASE_URL}`>
+            <Image src={logo} alt="SimpleRegs" />
         </a>
         <div class="internal-links">
-            <HeaderLink href="/">Explore</HeaderLink>
-            <HeaderLink href="/regulations">Regulations</HeaderLink>
-            <HeaderLink href="/template">Template</HeaderLink>
-            <HeaderLink href="/about">About Us</HeaderLink>
+            <HeaderLink href=`${import.meta.env.BASE_URL}/`>Explore</HeaderLink>
+            <HeaderLink href=`${import.meta.env.BASE_URL}/regulations`>
+                Regulations
+            </HeaderLink>
+            <HeaderLink href=`${import.meta.env.BASE_URL}/template`>
+                Template
+            </HeaderLink>
+            <HeaderLink href=`${import.meta.env.BASE_URL}/about`>
+                About Us
+            </HeaderLink>
         </div>
 
         <div class="search">
             <form action="/search" method="GET">
-                <input type="search" placeholder="Search..."/>
+                <input type="search" placeholder="Search..." />
             </form>
         </div>
 
