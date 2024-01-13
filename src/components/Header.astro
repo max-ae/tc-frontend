@@ -2,6 +2,7 @@
 import HeaderLink from "./HeaderLink.astro";
 import { Image } from "astro:assets";
 import logo from "../img/logo.png";
+import Button from "./Button.astro";
 ---
 
 <header>
@@ -9,7 +10,7 @@ import logo from "../img/logo.png";
         <a href=`${import.meta.env.BASE_URL}`>
             <Image src={logo} alt="SimpleRegs" />
         </a>
-        <div class="internal-links">
+        <div class="internal-links text-base">
             <HeaderLink href=`${import.meta.env.BASE_URL}/`>Explore</HeaderLink>
             <HeaderLink href=`${import.meta.env.BASE_URL}/regulations`>
                 Regulations
@@ -29,8 +30,10 @@ import logo from "../img/logo.png";
         </div>
 
         <div class="user">
-            <a href="/login">Login</a>
-            <a href="/signup">Sign Up</a>
+            <Button href="/login"><span class="text-base">Login</span></Button>
+            <Button href="/signup">
+                <span class="text-base">Sign Up</span>
+            </Button>
         </div>
     </nav>
 </header>

@@ -5,6 +5,7 @@ import Footer from "../components/Footer.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 import { getCollection } from "astro:content";
 import FormattedDate from "../components/FormattedDate.astro";
+import Button from "../components/Button.astro";
 
 const posts = (await getCollection("blog")).sort(
 	(a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf(),
@@ -127,11 +128,16 @@ const posts = (await getCollection("blog")).sort(
 			</span>
 			<div class="h-10"></div>
 			<div class="flex flex-col items-stretch max-md:w-full max-md:ml-0">
-				<h1
-					class="justify-center 950 text-opacity-90 text-2xl font-medium leading-8"
-				>
-					Regulatory Blog
-				</h1>
+				<div class="flex flex-row">
+					<h1
+						class="grow text-opacity-90 text-2xl font-medium leading-8"
+					>
+						Regulatory Blog
+					</h1>
+					<Button href=`${import.meta.env.BASE_URL}/blog`>
+						Browse all
+					</Button>
+				</div>
 				<p
 					class="justify-center text-stone-500 text-base leading-6 tracking-normal whitespace-nowrap mt-3"
 				>
