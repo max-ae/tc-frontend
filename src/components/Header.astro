@@ -10,7 +10,8 @@ import Button from "./Button.astro";
         <a href=`${import.meta.env.BASE_URL}`>
             <Image src={logo} alt="SimpleRegs" />
         </a>
-        <div class="internal-links text-base">
+        <div class="basis-1/5"></div>
+        <div class="internal-links text-base basis-1/2">
             <HeaderLink href=`${import.meta.env.BASE_URL}/`>Explore</HeaderLink>
             <HeaderLink href=`${import.meta.env.BASE_URL}/regulations`>
                 Regulations
@@ -22,7 +23,7 @@ import Button from "./Button.astro";
                 About Us
             </HeaderLink>
         </div>
-
+        <div class="w-1/5"></div>
         <div class="search">
             <form action="/search" method="GET">
                 <input type="search" placeholder="Search..." />
