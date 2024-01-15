@@ -1,0 +1,134 @@
+---
+import BaseHead from "../../components/BaseHead.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../../consts";
+import { getCollection } from "astro:content";
+import FormattedDate from "../../components/FormattedDate.astro";
+import Button from "../../components/Button.astro";
+import { Image } from "astro:assets";
+
+import paperwork from "../../img/paperwork.jpg";
+
+const posts = (await getCollection("templates")).sort((a, b) => {
+	return a.data.title.localeCompare(b.data.title);
+});
+
+const base = import.meta.env.BASE_URL;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		<style>
+			.templates {
+				ul {
+					display: flex;
+					flex-wrap: wrap;
+					gap: 2rem;
+					list-style-type: none;
+					margin: 0;
+					padding: 0;
+				}
+				ul li {
+					width: calc(50% - 1rem);
+				}
+				ul li * {
+					text-decoration: none;
+					transition: 0.2s ease;
+				}
+				ul li img {
+					margin-bottom: 0.5rem;
+					border-radius: 12px;
+					max-height: 400px;
+				}
+				ul li a {
+					display: block;
+				}
+				.title {
+					margin: 0;
+					color: rgb(var(--black));
+					line-height: 1;
+				}
+				ul li a:hover h4 {
+					color: rgb(var(--accent));
+				}
+				ul a:hover img {
+					box-shadow: var(--box-shadow);
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<Header />
+		<main class="w-[960px]">
+			<h1>Templates</h1>
+			Paperwork for installations, tax forms, support program applications,
+			and more. <br />
+			Our one-stop solution for filling out paperwork for the various topics
+			related to energy communities.
+			<hr />
+			<div class="h-10"></div>
+
+			<div class="flex space-x-10">
+				<a href={base}>
+					<Image
+						src={paperwork}
+						alt="Paperwork graphic"
+						class="rounded-xl shadow-xl"
+					/>
+				</a>
+				<div class="flex flex-col justify-center space-y-5">
+					<ul class="list-disc">
+						<li>Are you unsure about which template to use?</li>
+						<li>
+							Are you unsure of the details of the target
+							regulations, definitions, etc. and need our support
+							to complete the paperwork?
+						</li>
+						<li>Do you need a template that is not listed here?</li>
+						<li>Do you have any other questions?</li>
+					</ul>
+					<Button href={base}>
+						<span class="text-xl">Ask our AI Assistant!</span>
+					</Button>
+				</div>
+			</div>
+			<div class="h-10"></div>
+			<hr />
+
+			Are you already aware of the work involved and would like to find
+			the right template?
+
+			<div class="h-10"></div>
+
+			<section class="templates">
+				<ul>
+					{
+						posts.map((post) => (
+							<li>
+								<a
+									href={`${
+										import.meta.env.BASE_URL
+									}/template/${post.slug}/`}
+								>
+									{post.data.heroImage && (
+										<img
+											class="shadow-lg"
+											height={400}
+											src={post.data.heroImage}
+											alt=""
+										/>
+									)}
+									<h4 class="title">{post.data.title}</h4>
+								</a>
+							</li>
+						))
+					}
+				</ul>
+			</section>
+		</main>
+		<Footer />
+	</body>
+</html>
