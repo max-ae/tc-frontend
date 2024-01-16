@@ -6,6 +6,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 import { getCollection } from "astro:content";
 import FormattedDate from "../components/FormattedDate.astro";
 import Button from "../components/Button.astro";
+import ChatBox from "../components/ChatBox";
 
 const posts = (await getCollection("blog")).sort(
 	(a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf(),
@@ -105,26 +106,7 @@ const posts = (await getCollection("blog")).sort(
 					Simplifying Rules, Empowering You.
 				</div>
 				<div class="h-10"></div>
-				<span
-					class="justify-center border border-[color:var(--border-colors-foundations-border-inset,#D8DEE4)] shadow-sm bg-white flex flex-col p-3 rounded-lg border-solid items-start"
-				>
-					<header
-						class="self-stretch text-gray-500 text-sm font-bold leading-5 max-md:max-w-full"
-					>
-						AI Assistant
-					</header>
-					<p
-						class="self-stretch overflow-hidden text-gray-400 text-ellipsis text-base leading-5 mt-1.5 max-md:max-w-full"
-					>
-						Enter a question, for example "How to apply for Solar
-						Panel support in Munich?"
-					</p>
-					<a
-						href="#"
-						class="text-neutral-900 text-sm font-bold leading-5 whitespace-nowrap justify-center items-stretch border border-[color:var(--border-colors-foundations-border-inset,#D8DEE4)] shadow-sm aspect-[1.8888888888888888] mt-16 px-4 py-2 rounded-lg border-solid max-md:mt-10"
-						>Send</a
-					>
-				</span>
+				<ChatBox client:load />
 			</span>
 			<div class="h-10"></div>
 			<div class="flex flex-col items-stretch max-md:w-full max-md:ml-0">
