@@ -2,7 +2,7 @@
 title: 'How to use our AI Assistant to get regulation support?'
 description: 'Learn how to use our AI Assistant to get regulation support'
 pubDate: 'Nov 11 2023'
-heroImage: '/tc-frontend/blog-placeholder-2.jpg'
+heroImage: '/tc-frontend/ai.jpg'
 ---
 
 Here you can explore our tutorial blog. 
