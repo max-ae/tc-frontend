@@ -90,20 +90,20 @@ const posts = (await getCollection("blog")).sort(
 	<body>
 		<Header title={SITE_TITLE} />
 		<main>
-			<span class="flex flex-col items-stretch px-5">
+			<span class="flex flex-col">
 				<header
-					class="justify-center text-center text-5xl font-medium leading-[64px] tracking-tighter bg-clip-text w-full max-md:max-w-full max-md:text-4xl max-md:leading-[60px]"
+					class="justify-center text-center text-5xl leading-tight tracking-tighter"
 				>
 					The Centralized Platform regarding Regulatory Progress in
 					Energy Communities
 				</header>
 				<div
-					class="justify-center text-center text-base leading-6 tracking-normal self-center max-w-[525px] mt-5 max-md:max-w-full"
+					class="justify-center text-center leading-relaxed self-center max-w-prose mt-5"
 				>
-					SimpleRegs provides you with a Knowledge-base, an AI
-					Assistant for all things concerning Energy, and one-step
-					applications:<br />
-					Simplifying Rules, Empowering You.
+					SimpleRegs provides you with an AI Assistant for all
+					questions concerning energy, a Regulations Knowledge Base,
+					and a Document Template Database:<br />
+					<b><i>Simplifying Rules, Empowering You.</i></b>
 				</div>
 				<div class="h-10"></div>
 				<ChatBox client:load />
@@ -120,9 +120,7 @@ const posts = (await getCollection("blog")).sort(
 						Browse all
 					</Button>
 				</div>
-				<p
-					class="justify-center text-stone-500 text-base leading-6 tracking-normal whitespace-nowrap mt-3"
-				>
+				<p class="justify-center text-stone-500 mt-3">
 					Discover articles and tutorials to help you build better and
 					more sustainable energy communities.
 				</p>
