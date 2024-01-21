@@ -1,5 +1,9 @@
 import { useState } from 'react';
 
+function cleanupMessage(message) {
+  return message.replace(/\s?【.*】/g, '');
+}
+
 function ChatBox() {
   const [message, setMessage] = useState('Enter a question, for example "How to apply for Solar Panel support in Munich?"');
   const [thread, setThread] = useState([]);
@@ -34,21 +38,12 @@ function ChatBox() {
         AI Assistant
       </div>
       <div className="chat-area flex flex-col w-full">
-        {thread.map((msg) => {
-          if (msg.role == 'user') {
-            return (<div>
-              <b>User</b><br />
-              {msg.content[0].text.value}
-            </div>)
-          }
-          else {
-            return (<div>
-              <b>Assistant</b><br />
-              {msg.content[0].text.value}
-            </div>)
-          }
-        })
-        }
+        {thread.map((msg) => (
+          <div>
+            <b>{msg.role === 'user' ? 'User' : 'Assistant'}</b><br />
+            {cleanupMessage(msg.content[0].text.value)}
+          </div>
+        ))}
 
         <input
           className="flex grow p-2 focus:outline-none border rounded-lg text-gray-500"
