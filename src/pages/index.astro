@@ -5,6 +5,9 @@ import Footer from "../components/Footer.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 import Offering from "../components/Offering.astro";
 import USP from "../components/USP.astro";
+import { Image } from "astro:assets";
+
+import catcher from "../img/catcher.png";
 
 const base = import.meta.env.BASE_URL;
 ---
@@ -17,7 +20,7 @@ const base = import.meta.env.BASE_URL;
 	<body>
 		<Header title={SITE_TITLE} />
 		<main class="w-[70%]">
-			<div class="flex flex-col pb-20">
+			<div class="flex flex-col pb-10">
 				<header
 					class="justify-center text-center text-5xl leading-tight tracking-tighter"
 				>
@@ -31,8 +34,12 @@ const base = import.meta.env.BASE_URL;
 					<b><i>Simplifying Rules, Empowering You.</i></b>
 				</div>
 			</div>
-
-			<div class="flex flex-col space-y-10">
+			<Image
+				src={catcher}
+				alt="Solar Panels"
+				class="rounded-xl w-full max-w-full h-auto object-contain"
+			/>
+			<div class="flex flex-col space-y-10 pt-10">
 				<div>
 					<div class="text-3xl pb-5">
 						🌟 Embrace Solar Power with Confidence! 🌟
