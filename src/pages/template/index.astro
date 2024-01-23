@@ -75,7 +75,7 @@ const base = import.meta.env.BASE_URL;
 			<div class="h-10"></div>
 
 			<div class="flex space-x-10">
-				<a href={base}>
+				<a href={base + "/assistant"}>
 					<Image
 						src={paperwork}
 						alt="Paperwork graphic"
@@ -93,7 +93,7 @@ const base = import.meta.env.BASE_URL;
 						<li>Do you need a template that is not listed here?</li>
 						<li>Do you have any other questions?</li>
 					</ul>
-					<Button href={base}>
+					<Button href={base + "/assistant"}>
 						<span class="text-xl">Ask our AI Assistant!</span>
 					</Button>
 				</div>
