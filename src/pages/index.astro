@@ -3,154 +3,94 @@ import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
-import { getCollection } from "astro:content";
-import FormattedDate from "../components/FormattedDate.astro";
-import Button from "../components/Button.astro";
-
-const posts = (await getCollection("blog")).sort(
-	(a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf(),
-);
+import Offering from "../components/Offering.astro";
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-		<style>
-			main {
-				width: 960px;
-			}
-			ul {
-				display: flex;
-				flex-wrap: wrap;
-				gap: 2rem;
-				list-style-type: none;
-				margin: 0;
-				padding: 0;
-			}
-			ul li {
-				width: calc(50% - 1rem);
-			}
-			ul li * {
-				text-decoration: none;
-				transition: 0.2s ease;
-			}
-			ul li:first-child {
-				width: 100%;
-				margin-bottom: 1rem;
-				text-align: center;
-			}
-			ul li:first-child img {
-				width: 100%;
-			}
-			ul li:first-child .title {
-				font-size: 2.369rem;
-			}
-			ul li img {
-				margin-bottom: 0.5rem;
-				border-radius: 12px;
-			}
-			ul li a {
-				display: block;
-			}
-			.title {
-				margin: 0;
-				color: rgb(var(--black));
-				line-height: 1;
-			}
-			.date {
-				margin: 0;
-				color: rgb(var(--gray));
-			}
-			ul li a:hover h4,
-			ul li a:hover .date {
-				color: rgb(var(--accent));
-			}
-			ul a:hover img {
-				box-shadow: var(--box-shadow);
-			}
-			@media (max-width: 720px) {
-				ul {
-					gap: 0.5em;
-				}
-				ul li {
-					width: 100%;
-					text-align: center;
-				}
-				ul li:first-child {
-					margin-bottom: 0;
-				}
-				ul li:first-child .title {
-					font-size: 1.563em;
-				}
-			}
-		</style>
 	</head>
 	<body>
 		<Header title={SITE_TITLE} />
-		<main>
+		<main class="w-[960px]">
 			<span class="flex flex-col">
 				<header
 					class="justify-center text-center text-5xl leading-tight tracking-tighter"
 				>
-					The Centralized Platform regarding Regulatory Progress in
-					Energy Communities
+					Welcome to SimpleRegs!
 				</header>
 				<div
 					class="justify-center text-center leading-relaxed self-center max-w-prose mt-5"
 				>
-					SimpleRegs provides you with an AI Assistant for all
-					questions concerning energy, a Regulations Knowledge Base,
-					and a Document Template Database:<br />
+					The Centralized Platform for Regulatory Progress in
+					Neuperlach's Energy Community <br />
 					<b><i>Simplifying Rules, Empowering You.</i></b>
 				</div>
-				<div class="h-10"></div>
 			</span>
 			<div class="h-10"></div>
-			<div class="flex flex-col items-stretch max-md:w-full max-md:ml-0">
-				<div class="flex flex-row">
-					<h1
-						class="grow text-opacity-90 text-2xl font-medium leading-8"
-					>
-						Regulatory Blog
-					</h1>
-					<Button href=`${import.meta.env.BASE_URL}/blog`>
-						Browse all
-					</Button>
+
+			<div class="flex flex-col space-y-5">
+				<span class="text-3xl"
+					>🌟 Embrace Solar Power with Confidence! 🌟</span
+				>
+				<span>
+					Living in Neuperlach and dreaming of harnessing the power of
+					the sun from your balcony? <br />
+					Photovoltaics are your sustainable answer, but does the thought
+					of navigating the maze of regulations make you hesitant?
+				</span>
+
+				<span class="text-3xl">👉🏼 Worry no more!</span>
+				<span>
+					<ul class="list-disc list-inside">
+						<li>
+							<b>Confused by Complex Regulations?</b> We've got you
+							covered with straightforward guidance.
+						</li>
+						<li>
+							<b>Baffled by Legal Jargon?</b> Our platform translates
+							legalese into simple English or another language of your
+							choice, making it accessible especially for non-native
+							German speakers.
+						</li>
+						<li>
+							<b>Short on Time?</b> Say goodbye to endless hours of
+							research!
+						</li>
+					</ul>
+				</span>
+				<div class="space-y-8">
+					<p class="text-3xl">
+						🚀 SimpleRegs is here to empower your solar aspirations!
+						🚀
+					</p>
+					We offer:
+
+					<div class="flex flex-row justify-center space-x-8">
+						<Offering
+							href=`${import.meta.env.BASE_URL}/assistant`
+							src=`${import.meta.env.BASE_URL}/solar.jpg`
+						>
+							An AI Assistant ready to tackle all your questions
+						</Offering>
+						<Offering
+							href=`${import.meta.env.BASE_URL}/blog`
+							src=`${import.meta.env.BASE_URL}/solar.jpg`
+						>
+							A comprehensive Regulations Knowledge Base for
+							clear, up-to-date information
+						</Offering>
+						<Offering
+							href=`${import.meta.env.BASE_URL}/template`
+							src=`${import.meta.env.BASE_URL}/solar.jpg`
+						>
+							A vast database of document templates and forms to
+							streamline your paperwork
+						</Offering>
+					</div>
 				</div>
-				<p class="justify-center text-stone-500 mt-3">
-					Discover articles and tutorials to help you build better and
-					more sustainable energy communities.
-				</p>
 			</div>
-			<section>
-				<ul>
-					{
-						posts.map((post) => (
-							<li>
-								<a
-									href={`${import.meta.env.BASE_URL}/blog/${
-										post.slug
-									}/`}
-								>
-									<img
-										width={720}
-										height={360}
-										src={post.data.heroImage}
-										alt=""
-									/>
-									<h4 class="title">{post.data.title}</h4>
-									<p class="date">
-										<FormattedDate
-											date={post.data.pubDate}
-										/>
-									</p>
-								</a>
-							</li>
-						))
-					}
-				</ul>
-			</section>
 		</main>
 		<Footer />
 	</body>

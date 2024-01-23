@@ -1,0 +1,11 @@
+---
+const { src, href } = Astro.props;
+---
+
+<a
+    href={href}
+    class="flex flex-col items-center flex-1 space-y-8 text-inherit hover:shadow-2xl rounded-xl p-1"
+>
+    <img class="h-[200px] w-[200px] rounded-full" src={src} />
+    <div><slot /></div>
+</a>
