@@ -1,20 +1,48 @@
 ---
 import Layout from "../layouts/BlogPost.astro";
+import Member from "../components/Member.astro";
+
+const teamMembers = [
+  {
+    name: "Max Eisner",
+    title: "DevOps & Backend Pro",
+    subtitle: "Frontend & Backend Development",
+    img: "/tc-frontend/team/max.jpeg",
+  },
+  {
+    name: "Anna-Maria Geist",
+    title: "Strategy Expert in Tech & Innovation",
+    subtitle: "Business Development",
+    img: "/tc-frontend/team/anna.jpeg",
+  },
+  {
+    name: "Alejandro Solano Marin",
+    title: "Energy Consulting Specialist",
+    subtitle: "Business Development",
+    img: "/tc-frontend/team/alejandro.png",
+  },
+  {
+    name: "Zhiyi Pan",
+    title: "IT Project Management Expert",
+    subtitle: "UI-Design",
+    img: "/tc-frontend/team/zhiyi.jpeg",
+  },
+  {
+    name: "Emirhan Erol",
+    title: "UX-Driven Business Strategist",
+    subtitle: "Business Development",
+    img: "/tc-frontend/team/emir.png",
+  },
+];
 ---
 
 <Layout
-	title="About Us"
-	description="The people behind SimpleRegs"
-	pubDate={new Date("October 15 2023")}
-	heroImage=`${import.meta.env.BASE_URL}/team.jpg`
+  title="About Us"
+  description="The people behind SimpleRegs"
+  pubDate={new Date("October 15, 2023")}
+  heroImage=""
 >
-	<p>Max Eisner - M.Sc. Informatics</p>
-
-	<p>Anna-Maria Geist - M.Sc. Management and Technology</p>
-
-	<p>Zhiyi Pan - M.Sc. Informatics</p>
-
-	<p>Alejandro Solano Marin - M.Sc. Management and Technology</p>
-
-	<p>Emirhan Erol - M.Sc. Management</p>
+  <div class="flex flex-wrap space-x-6">
+    {teamMembers.map((member) => <Member {...member} />)}
+  </div>
 </Layout>
